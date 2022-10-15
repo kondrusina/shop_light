@@ -1,0 +1,13 @@
+@import 'libs/normalize.css';
+
+
+
+$bg: rgb(255, 0, 221);
+
+body {
+    user-select: none;
+}
+
+h1 {
+    color: $bg;
+}
