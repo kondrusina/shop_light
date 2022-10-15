@@ -28,6 +28,7 @@ module.exports = {
                 loader: 'html-loader'  //html модуль 
             },
 
+            //style модуль
             {
                 test: /\.(c|sa|sc)ss$/i,
                 use: [MiniCssExtractPlugin.loader, 'css-loader',
@@ -41,8 +42,9 @@ module.exports = {
                 },
                     'sass-loader'
                 ],
-            }, //style модуль 
+            },
 
+            // babel модуль
             {
                 test: /\.m?js$/,
                 exclude: /(node_modules|bower_components)/,
@@ -52,7 +54,16 @@ module.exports = {
                         presets: ['@babel/preset-env']
                     }
                 }
-            } // babel модуль 
+            },
+
+            // шрифты
+            {
+                test: /\.(ttf|otf|eot|woff|woff2)$/i,
+                type: 'asset/resource',
+                generator: {
+                    filename: 'fonts/[name][ext]'
+                }
+            }
         ],
     }
 }
