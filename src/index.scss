@@ -1,15 +1,65 @@
-@import 'libs/normalize.css';
-@import 'style/fonts';
+@import 'libs/reset.css';
+@import './styles/fonts';
+@import './styles/vars';
 
 
-
-$bg: rgb(255, 0, 221);
-
-body {
-    user-select: none;
+.container {
+    margin: 0 auto;
+    max-width: 1200px;
 }
 
-h1 {
-    color: $bg;
-    font-family: 'Roboto';
+.header__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header {
+
+    background-color: $bg;
+
+    &__logo {
+        background-image: url(./images/ease.png);
+        width: 219px;
+        height: 45px;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    &__list {
+        display: flex;
+    }
+
+
+    &__link {
+        text-decoration: none;
+        font-size: 21px;
+        color: $link;
+        letter-spacing: 0.055em;
+        text-transform: uppercase;
+        margin-right: 64px;
+        font-family: $fonts;
+
+
+        &:hover {
+            color: black;
+            transition: 2s;
+        }
+    }
+
+}
+
+
+.main__container {
+    display: flex;
+}
+
+.main__left {
+    flex-basis: 45%;
+}
+
+.main__text {}
+
+.main__right {
+    flex-basis: 55%;
 }

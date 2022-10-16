@@ -23,12 +23,14 @@ module.exports = {
 
     module: {
         rules: [
+
+            // loading html
             {
                 test: /\.html$/i,
-                loader: 'html-loader'  //html модуль 
+                loader: 'html-loader'
             },
 
-            //style модуль
+            // loading styles
             {
                 test: /\.(c|sa|sc)ss$/i,
                 use: [MiniCssExtractPlugin.loader, 'css-loader',
@@ -44,7 +46,7 @@ module.exports = {
                 ],
             },
 
-            // babel модуль
+            // loading babel
             {
                 test: /\.m?js$/,
                 exclude: /(node_modules|bower_components)/,
@@ -56,12 +58,21 @@ module.exports = {
                 }
             },
 
-            // шрифты
+            // loading fonts
             {
                 test: /\.(ttf|otf|eot|woff|woff2)$/i,
                 type: 'asset/resource',
                 generator: {
                     filename: 'fonts/[name][ext]'
+                }
+            },
+
+            //loading images 
+            {
+                test: /\.gpe?g$|\.gif$|\.png|\.ico|\.svg$/,
+                use: ['file-loader'],
+                generator: {
+                    filename: 'images/[name][ext]'
                 }
             }
         ],
