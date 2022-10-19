@@ -2,6 +2,10 @@
 @import './styles/fonts';
 @import './styles/vars';
 
+* {
+    box-sizing: border-box;
+}
+
 
 .container {
     margin: 0 auto;
@@ -14,8 +18,8 @@
     align-items: center;
 }
 
-.header {
 
+.header {
     background-color: $bg;
 
     &__logo {
@@ -26,10 +30,19 @@
         background-size: cover;
     }
 
-    &__list {
-        display: flex;
+    nav {
+        flex-basis: 40%;
     }
 
+    &__list {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    &__item {
+        margin-right: 2%;
+    }
 
     &__link {
         text-decoration: none;
@@ -37,9 +50,6 @@
         color: $link;
         letter-spacing: 0.055em;
         text-transform: uppercase;
-        margin-right: 64px;
-        font-family: $fonts;
-
 
         &:hover {
             color: black;
@@ -47,19 +57,64 @@
         }
     }
 
+    &__link_without {
+        margin-right: 0%;
+    }
+
 }
 
+.main {
+    background-color: $bg;
 
-.main__container {
-    display: flex;
-}
+    .main__container {
+        display: flex;
+    }
 
-.main__left {
-    flex-basis: 45%;
-}
+    &__left {
+        flex-basis: 45%;
+    }
 
-.main__text {}
+    &__text {
+        font-size: 24px;
+        letter-spacing: 0.055em;
+        width: 100%;
+        font-family: $fonts;
+        padding-top: 12%;
+        padding-right: 5%;
+        padding-bottom: 10%;
+    }
 
-.main__right {
-    flex-basis: 55%;
+    .bottom {
+        padding-top: 4%;
+        position: relative;
+
+        &__naiming {
+            z-index: 2;
+            position: absolute;
+            top: 200px;
+            left: 4%
+        }
+    }
+
+    .circle {
+        width: 462px;
+        height: 450px;
+        background: #E4D7B9;
+        border-radius: 250px;
+        transform: matrix(1, 0, 0, -1, 0, 0);
+        position: absolute;
+        left: -56.95px;
+    }
+
+    &__right {
+        flex-basis: 55%;
+        background-image: url(./images/bg__main__right.png);
+
+    }
+
+    .right__show {
+        padding-top: 2%;
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        min-height: 1087px;
+    }
 }
