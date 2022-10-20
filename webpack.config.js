@@ -9,15 +9,17 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, './dist'),
         clean: true,
-        filename: 'main[contenthash].js' // браузер будет доставать не из своего хэша, а создавать новый файл
+        filename: 'main[contenthash].js'
     },
 
     plugins: [
+        //плагин html 
         new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, 'src', 'index.html'), //плагин html 
+            template: path.resolve(__dirname, 'src', 'index.html'),
         }),
+        // плагин css
         new MiniCssExtractPlugin({
-            filename: 'main[contenthash].css' // плагин css
+            filename: 'main[contenthash].css'
         })
     ],
 
@@ -70,7 +72,7 @@ module.exports = {
             //loading images 
             {
                 test: /\.gpe?g$|\.gif$|\.png|\.ico|\.svg$/,
-                use: ['file-loader'],
+                use: 'file-loader',
                 generator: {
                     filename: 'images/[name][ext]'
                 }

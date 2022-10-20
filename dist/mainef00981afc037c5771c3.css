@@ -1,0 +1,116 @@
+/* http://meyerweb.com/eric/tools/css/reset/ */
+/* v1.0 | 20080212 */
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+font,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+body {
+    line-height: 1;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+/* remember to define focus styles! */
+:focus {
+    outline: 0;
+}
+
+/* remember to highlight inserts somehow! */
+ins {
+    text-decoration: none;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+@font-face{font-family:"SF Compact Display";src:url(fonts/SFCompactDisplay-Regular.otf);src:url(fonts/SFCompactDisplay-Thin.otf)}*{box-sizing:border-box}.container{margin:0 auto;max-width:1200px}.header__container{display:flex;justify-content:space-between;align-items:center}.header{background-color:#dbeeee}.header__logo{background-image:url(images/ease.png);width:219px;height:45px;background-repeat:no-repeat;background-size:cover}.header nav{flex-basis:40%}.header__list{display:flex;justify-content:space-between;flex-wrap:wrap}.header__item{margin-right:2%}.header__link{text-decoration:none;font-size:21px;color:#3d9090;letter-spacing:.055em;text-transform:uppercase}.header__link:hover{color:#000;transition:2s}.header__link_without{margin-right:0%}.main{background-color:#dbeeee}.main .main__container{display:flex}.main__left{flex-basis:45%}.main__text{font-size:24px;letter-spacing:.055em;width:100%;font-family:"SF Compact Display";padding-top:12%;padding-right:5%;padding-bottom:10%}.main .bottom{padding-top:4%;position:relative}.main .bottom__naiming{z-index:2;position:absolute;top:200px;left:4%}.main .circle{width:462px;height:450px;background:#e4d7b9;border-radius:250px;transform:matrix(1, 0, 0, -1, 0, 0);position:absolute;left:-56.95px}.main__right{flex-basis:55%;background-image:url(images/bg__main__right.png)}.main .right__show{padding-top:2%;filter:drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));min-height:1087px}
