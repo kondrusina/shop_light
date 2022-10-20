@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const JavaScriptObfuscator = require('webpack-obfuscator');
 
 module.exports = {
     entry: {
@@ -9,42 +10,41 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, './dist'),
         clean: true,
-        filename: 'main[contenthash].js'
+        filename: 'main[contenthash].js' // браузер будет доставать не из своего хэша, а создавать новый файл
     },
 
     plugins: [
-        //плагин html 
         new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, 'src', 'index.html'),
+            template: path.resolve(__dirname, 'src', 'index.html'), //плагин html 
         }),
-        // плагин css
         new MiniCssExtractPlugin({
-            filename: 'main[contenthash].css'
+            filename: 'main[contenthash].css' // плагин css
         })
     ],
 
     module: {
         rules: [
-
             // loading html
             {
                 test: /\.html$/i,
-                loader: 'html-loader'
+                loader: 'html-loader',
             },
 
             // loading styles
             {
                 test: /\.(c|sa|sc)ss$/i,
-                use: [MiniCssExtractPlugin.loader, 'css-loader',
-                {
-                    loader: 'postcss-loader',
-                    options: {
-                        postcssOptions: {
-                            plugins: [require('postcss-preset-env')],
-                        }
-                    }
-                },
-                    'sass-loader'
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            postcssOptions: {
+                                plugins: [require('postcss-preset-env')],
+                            },
+                        },
+                    },
+                    'sass-loader',
                 ],
             },
 
@@ -55,9 +55,9 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['@babel/preset-env']
-                    }
-                }
+                        presets: ['@babel/preset-env'],
+                    },
+                },
             },
 
             // loading fonts
@@ -65,14 +65,14 @@ module.exports = {
                 test: /\.(ttf|otf|eot|woff|woff2)$/i,
                 type: 'asset/resource',
                 generator: {
-                    filename: 'fonts/[name][ext]'
-                }
+                    filename: 'fonts/[name][ext]',
+                },
             },
 
             //loading images 
             {
                 test: /\.gpe?g$|\.gif$|\.png|\.ico|\.svg$/,
-                use: 'file-loader',
+                use: ['file-loader'],
                 generator: {
                     filename: 'images/[name][ext]'
                 }
