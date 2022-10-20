@@ -1,80 +1,97 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const JavaScriptObfuscator = require('webpack-obfuscator');
 
-module.exports = {
-    entry: {
-        main: path.resolve(__dirname, './src/index.js'),
-    },
-    output: {
-        path: path.resolve(__dirname, './dist'),
-        clean: true,
-        filename: 'main[contenthash].js' // браузер будет доставать не из своего хэша, а создавать новый файл
-    },
+module.exports = (env, args) => {
+    const isProduction = args?.mode === 'production';
 
-    plugins: [
-        new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, 'src', 'index.html'), //плагин html 
-        }),
-        new MiniCssExtractPlugin({
-            filename: 'main[contenthash].css' // плагин css
-        })
-    ],
+    return {
+        entry: {
+            main: path.resolve(__dirname, './src/index.js'),
+        },
 
-    module: {
-        rules: [
+        output: {
+            path: path.resolve(__dirname, './dist'),
+            filename: 'main.[contenthash].js', // браузер будет доставать не из своего хэша, а создавать новый файл
+            clean: true,
+        },
 
-            // loading html
-            {
-                test: /\.html$/i,
-                loader: 'html-loader'
-            },
+        performance: {
+            hints: false,
+            maxEntrypointSize: 512000,
+            maxAssetSize: 512000,
+        },
 
-            // loading styles
-            {
-                test: /\.(c|sa|sc)ss$/i,
-                use: [MiniCssExtractPlugin.loader, 'css-loader',
+        plugins: [
+            new HtmlWebpackPlugin({
+                template: path.resolve(__dirname, 'src', 'index.html'), //плагин html
+            }),
+            new MiniCssExtractPlugin({
+                filename: './main.css', // плагин css
+            }),
+            isProduction &&
+                new JavaScriptObfuscator({
+                    rotateUnicodeArray: true,
+                }),
+        ].filter(Boolean),
+
+        module: {
+            rules: [
+                // loading html
                 {
-                    loader: 'postcss-loader',
-                    options: {
-                        postcssOptions: {
-                            plugins: [require('postcss-preset-env')],
-                        }
-                    }
+                    test: /\.html$/i,
+                    loader: 'html-loader',
                 },
-                    'sass-loader'
-                ],
-            },
 
-            // loading babel
-            {
-                test: /\.m?js$/,
-                exclude: /(node_modules|bower_components)/,
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['@babel/preset-env']
-                    }
-                }
-            },
+                // loading styles
+                {
+                    test: /\.(c|sa|sc)ss$/i,
+                    use: [
+                        MiniCssExtractPlugin.loader,
+                        'css-loader',
+                        {
+                            loader: 'postcss-loader',
+                            options: {
+                                postcssOptions: {
+                                    plugins: [require('postcss-preset-env')],
+                                },
+                            },
+                        },
+                        'sass-loader',
+                    ],
+                },
 
-            // loading fonts
-            {
-                test: /\.(ttf|otf|eot|woff|woff2)$/i,
-                type: 'asset/resource',
-                generator: {
-                    filename: 'fonts/[name][ext]'
-                }
-            },
+                // loading babel
+                {
+                    test: /\.m?js$/,
+                    exclude: /(node_modules|bower_components)/,
+                    use: {
+                        loader: 'babel-loader',
+                        options: {
+                            presets: ['@babel/preset-env'],
+                        },
+                    },
+                },
 
-            //loading images 
-            {
-                test: /\.gpe?g$|\.gif$|\.png|\.ico|\.svg$/,
-                use: ['file-loader'],
-                generator: {
-                    filename: 'images/[name][ext]'
-                }
-            }
-        ],
-    }
-}
+                // loading fonts
+                {
+                    test: /\.(ttf|otf|eot|woff|woff2)$/i,
+                    type: 'asset/resource',
+                    generator: {
+                        filename: 'fonts/[name][ext]',
+                    },
+                },
+
+                //loading images
+                {
+                    test: /\.(png|svg|jpe?g|gif|ico)$/i,
+                    type: 'asset/resource',
+                    generator: {
+                        filename: './images/[name].[hash].[ext]',
+                    },
+                },
+            ],
+        },
+    };
+};

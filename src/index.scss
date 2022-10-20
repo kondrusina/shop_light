@@ -1,11 +1,10 @@
-@import 'libs/reset.css';
+@import './styles/reset.css';
 @import './styles/fonts';
 @import './styles/vars';
 
 * {
     box-sizing: border-box;
 }
-
 
 .container {
     margin: 0 auto;
@@ -18,12 +17,11 @@
     align-items: center;
 }
 
-
 .header {
     background-color: $bg;
 
     &__logo {
-        background-image: url(./images/ease.png);
+        background-image: url('./images/ease.png');
         width: 219px;
         height: 45px;
         background-repeat: no-repeat;
@@ -58,13 +56,12 @@
     }
 
     &__link_without {
-        margin-right: 0%;
+        margin-right: 0;
     }
-
 }
 
 .main {
-    background-color: $bg;
+    background-color: $bg; // ← don't shorten names, check index.js for the explanation
 
     .main__container {
         display: flex;
@@ -92,14 +89,14 @@
             z-index: 2;
             position: absolute;
             top: 200px;
-            left: 4%
+            left: 4%;
         }
     }
 
     .circle {
         width: 462px;
         height: 450px;
-        background: #E4D7B9;
+        background: #e4d7b9;
         border-radius: 250px;
         transform: matrix(1, 0, 0, -1, 0, 0);
         position: absolute;
@@ -108,8 +105,7 @@
 
     &__right {
         flex-basis: 55%;
-        background-image: url(./images/bg__main__right.png);
-
+        background-image: url('./images/bg__main__right.png');
     }
 
     .right__show {
