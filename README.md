@@ -1,13 +1,13 @@
 <a id='anchor'>
 # Онлайн магазин "EASY".
 
-__ТЗ:__
+##ТЗ:
 
 Сверстать landing page по макету в [Figma](https://www.figma.com/proto/5nbYPIJ1xbTSfYLkWdtIbU/Design?node-id=1%3A2&scaling=scale-down&page-id=0%3A1)
 1. Один слайд — одно состояние. Будет плюсом добавить анимацию для переходов
 между состояниями. Высота страницы должна занимать 100% области просмотра.
 2. [Документация API.](https://lampshop.docs.apiary.io/#reference/0/questions-collection) Чтоб получить рабочий запрос нужно выбрать Mock Server, как на скрине:
-![скриншот настройки Api](api.png)
+![скриншот настройки Api](./src/images/api.png)
 
 3. Необходимо GET запросом получать список товаров и отрисовывать его на
 странице.

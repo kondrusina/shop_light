@@ -1,7 +1,7 @@
 import './index.html';
 import './index.scss';
 
-import mockData from './lib/mock-data';
+import mockData from './libs/mock-data';
 
 console.log({ mockData });
 
