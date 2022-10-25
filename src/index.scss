@@ -107,14 +107,13 @@
 
         &__switch {
             background-color: #BDDDDD;
-            max-width: 178px;
-            min-height: 554px;
+            max-width: 10vw;
             z-index: 3;
-            border-radius: 8px 0 0 0;
+            border-radius: 8px 0 0 0; // не получается задать бордер двум углам, как бы не меняла значение нижнего угла - ничего не меняется.
 
             .switch__item {
-                width: 8.5em;
-                height: 8.5em;
+                width: 6.5vw;
+                height: 20vh;
                 background-repeat: no-repeat;
                 border-radius: 14px;
                 margin: 17px 17px 20px 17px;
@@ -180,8 +179,6 @@
         min-height: 100vh;
     }
 
-    .right__show {
-        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-        height: 69vh;
-    }
+    // здесь косяки с фоновой картинкой, не могу сделать так, чтобы она вся вошла в блог. Начинаю исправлять ширину, ломается высота и наоборот. И тоже самое с бордерами лажа какая-то :(
+
 }
