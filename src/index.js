@@ -26,13 +26,12 @@ const data = fetch(
         document.querySelector('.bottom__text_weight').innerText = 'Net Weight:' + ' ' + data[0].weight;
         document.querySelector('.bottom__text_power').innerText = 'Electrification:' + ' ' + data[0].electrification;
 
-        let image = document.querySelector('.bottom__picture').append(img);
-        image.src = data[0].image;
 
+        // document.querySelector('.switch__picture').src = data[0].image;
 
+        // let image = document.querySelector('.bottom__picture').append(img);
+        // image.src = data[0].image;
 
-
-        // document.querySelector('.bottom__text').innerText = data[0].name;
     }); // here you can start using it
 
 
