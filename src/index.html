@@ -5,34 +5,38 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
     <title>Easy</title>
 </head>
 
 <body>
+    <!--HEADER START-->
     <header class="header">
         <div class="container header__container">
-            <a href="./images/ease.png" class="header__logo"></a>
-            <nav>
-                <ul class="header__list">
-                    <li class="header__item">
-                        <a class="header__link" href="#">Collesctions</a>
+            <img src="images/ease.png" class="header__logo">
+            <nav class="navigation">
+                <ul class="navigation__list">
+                    <li class="navigation__item">
+                        <a class="navigation__link" href="#">Collections</a>
                     </li>
-                    <li class="header__item">
-                        <a class="header__link" href="#">Blog</a>
+                    <li class="navigation__item">
+                        <a class="navigation__link" href="#">Blog</a>
                     </li>
-                    <li class="header__item">
-                        <a class="header__link" href="#">About</a>
+                    <li class="navigation__item">
+                        <a class="navigation__link" href="#">About</a>
                     </li>
-                    <li class="header__item">
-                        <a class="header__link header__link_without" href="#">Сontacts</a>
+                    <li class="navigation__item">
+                        <a class="navigation__link navigation__link_without" href="#">Сontacts</a>
                     </li>
                 </ul>
             </nav>
         </div>
     </header>
-
+    <!--HEADER END-->
+    <!--MAIN START-->
     <main class="main">
         <div class="container main__container">
+    <!--MAIN LEFT START-->
             <section class="main__left">
                 <p class="main__text">Collection of lighting is inspired by the geometric works of the great Suprematist
                     artists Kissitzky and Kazimir Malevich. <br> <br>
@@ -41,30 +45,27 @@
                     geometric forms, such as circles, squares, lines and rectangles. The geometric structure of the
                     lamps will always look like a small art objects in your house.</p>
                 <div class="bottom">
-                    <div class="circle"></div>
+                    <div class="circle">
+                    </div>
                     <div class="bottom__naiming">
                         <p class="bottom__text"></p>
                         <p class="bottom__text_size"></p>
                         <p class="bottom__text_weight"></p>
                         <p class="bottom__text_power"></p>
                     </div>
+
                     <div class="bottom__picture">
-
-
                     </div>
                     <div class="bottom__switch switch">
                         <div class="switch__image">
-                            <a class="click" href="">
-                                <div class="switch__item">
-                                    <img class="switch__picture" src="./images/Lamp_item_one.png" alt="lamp">
-                                </div>
-                            </a>
-
-                            <div class="switch__item">
-                                <img src="./images/Lamp_item_two.png" alt="lamp">
+                            <div id="swichItemOne" class="switch__item switch__item-margin">
+                                <img width="34" height="125" class="switch__picture" src="/src/images/Lamp_item_one.png" alt="lamp">
                             </div>
-                            <div class="switch__item">
-                                <img src="./images/Lamp_item_three.png" alt="lamp">
+                            <div  id="swichItemTwo" class="switch__item">
+                                <img width="40" height="126" class="switch__picture" src="/src/images/lamp_item_two.png" alt="lamp">
+                            </div>
+                            <div  id="swichItemThree" class="switch__item switch__item-margin2">
+                                <img width="72" height="105" class="switch__picture-margin" src="/src/images/lamp_item_three.png" alt="lamp">
                             </div>
                         </div>
                         <div class="switch__thems thems">
@@ -78,11 +79,14 @@
                     </div>
                 </div>
             </section>
+    <!--MAIN LEFT END-->
             <section class="main__right right">
                 <div class="right__show"></div>
             </section>
         </div>
     </main>
+    <!--MAIN END-->
+<script src="/src/index.js"></script>
 </body>
 
 </html>

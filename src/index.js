@@ -1,37 +1,68 @@
-import './index.html';
-import './index.scss';
+const themsDark = document.querySelector('.thems__dark');
+const themsLight = document.querySelector('.thems__light');
 
-import mockData from './libs/mock-data';
+themsDark.addEventListener('click', function() {
+    const mainRight = document.querySelector('.main__right');
+    mainRight.style.backgroundImage = 'url(images/bg__main__right_dark.png)';
+})
 
-console.log({ mockData });
+themsLight.addEventListener('click', function() {
+    const mainRight = document.querySelector('.main__right');
+    mainRight.style.backgroundImage = 'url(./images/bg__main__right.png)';
+})
 
-// ↑ btw, don't skimp on symbols, use understandable "button" class name
-// your code anyway will be automatically obfuscated for the production
-// so, it is no need in this type of economy
+const swichItemOne = document.querySelector('#swichItemOne');
+const swichItemTwo = document.querySelector('#swichItemTwo');
+const swichItemThree = document.querySelector('#swichItemThree');
 
-/*
+const url = 'https://private-anon-dc20360ec3-lampshop.apiary-mock.com/lamps';
 
-try not to overload API, or it will stop to answer you
-uncomment it, when will be testing API itself
-for markup and styles you can use mock data as specified above 
-*/
-
-const data = fetch(
-    'https://private-anon-74061ac3bc-lampshop.apiary-mock.com/lamps',
-)
-    .then((response) => response.json())
-    .then((data) => {
-        document.querySelector('.bottom__text').innerText = 'Material:' + ' ' + data[0].material;
-        document.querySelector('.bottom__text_size').innerText = 'Dimensions (cm):' + ' ' + data[0].height;
-        document.querySelector('.bottom__text_weight').innerText = 'Net Weight:' + ' ' + data[0].weight;
-        document.querySelector('.bottom__text_power').innerText = 'Electrification:' + ' ' + data[0].electrification;
+swichItemOne.addEventListener('click', async function getProduct () {
+    try {
+        
+            const response = await fetch(url)
+            const data = await response.json();
+            console.log(data);
 
 
-        // document.querySelector('.switch__picture').src = data[0].image;
 
-        // let image = document.querySelector('.bottom__picture').append(img);
-        // image.src = data[0].image;
+            const material = document.querySelector('.bottom__text');
+            material.textContent = 'Material:' + ' ' + data[0].material; 
 
-    }); // here you can start using it
+            const size = document.querySelector('.bottom__text_size');
+            size.textContent = 'Dimensions (cm):' + ' ' + data[0].height + ' ' + 'x' + ' ' + data[0].width; 
+            const weight = document.querySelector('.bottom__text_weight');
+            weight.textContent = 'Net Weight:' + ' ' + data[0].weight; 
+
+            const electrification = document.querySelector('.bottom__text_power');
+            electrification.textContent = ' Electrification:' + ' ' + data[0].electrification;
+
+
+            const picture = document.querySelector('.bottom__picture');
+            if (picture.getElementsByTagName('img').length>0) {
+                return
+            }
+            const image = document.createElement('img');
+            image.src = data[0].image;
+            picture.appendChild(image);
+
+            const pictureRight = document.querySelector('.right');
+            if (pictureRight.getElementsByTagName('img').length>0) {
+                return
+            }
+
+            const imageRight = document.createElement('img');
+            imageRight.src = data[0].image;
+            imageRight.className = 'imageRight'
+            pictureRight.appendChild(imageRight);
+
+
+
+    } catch (error) {
+        console.log(error);
+    }
+} )
+
+
 
 
